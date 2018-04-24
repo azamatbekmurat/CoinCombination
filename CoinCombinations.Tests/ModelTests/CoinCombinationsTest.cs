@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CoinCombs.Models;
 using System.Collections.Generic;
+using System;
 
 namespace CoinCombs.Tests
 {
@@ -8,12 +9,65 @@ namespace CoinCombs.Tests
   public class CoinCombGenTest
   {
     [TestMethod]
-    public void IsPing_NumberDivisibleByThree_True()
+    public void Change_GivesCoin_25()
     {
       CoinCombGen testCoinComb = new CoinCombGen(25);
       testCoinComb.ToChange();
       List<string> OutputCoins = testCoinComb.GetAll();
-      Assert.AreEqual("1", OutputCoins);
+      List<string> ExpectedCoins = new List<string>() {
+        "1 quarter(s)",
+        "0 dime(s)",
+        "0 nickel(s)",
+        "0 penny(s)"
+      };
+            // Console.WriteLine to see what elements in the List
+            foreach(var item in OutputCoins)
+            {
+              Console.WriteLine(item);
+            }
+      CollectionAssert.AreEqual(ExpectedCoins, OutputCoins);
+    }
+
+    [TestMethod]
+    public void Change_GivesMultipleCoins_26()
+    {
+      CoinCombGen testCoinComb = new CoinCombGen(26);
+      testCoinComb.ToChange();
+      List<string> OutputCoins = testCoinComb.GetAll();
+      List<string> ExpectedCoins = new List<string>() {
+        "1 quarter(s)",
+        "0 dime(s)",
+        "0 nickel(s)",
+        "1 penny(s)"
+      };
+            // Console.WriteLine to see what elements in the List
+            foreach(var item in OutputCoins)
+            {
+              Console.WriteLine(item);
+            }
+
+      CollectionAssert.AreEqual(ExpectedCoins, OutputCoins);
+    }
+
+    [TestMethod]
+    public void Change_GivesMultipleCoins_99()
+    {
+      CoinCombGen testCoinComb = new CoinCombGen(99);
+      testCoinComb.ToChange();
+      List<string> OutputCoins = testCoinComb.GetAll();
+      List<string> ExpectedCoins = new List<string>() {
+        "3 quarter(s)",
+        "2 dime(s)",
+        "0 nickel(s)",
+        "4 penny(s)"
+      };
+            // Console.WriteLine to see what elements in the List
+            foreach(var item in OutputCoins)
+            {
+              Console.WriteLine(item);
+            }
+
+      CollectionAssert.AreEqual(ExpectedCoins, OutputCoins);
     }
 
   }

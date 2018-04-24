@@ -50,17 +50,12 @@ namespace CoinCombs.Tests
     }
 
     [TestMethod]
-    public void Change_GivesMultipleCoins_99()
+    public void Change_GivesMultipleCoins_94()
     {
-      CoinCombGen testCoinComb = new CoinCombGen(99);
+      CoinCombGen testCoinComb = new CoinCombGen(94);
       testCoinComb.ToChange();
       List<string> OutputCoins = testCoinComb.GetAll();
-      List<string> ExpectedCoins = new List<string>() {
-        "3 quarter(s)",
-        "2 dime(s)",
-        "0 nickel(s)",
-        "4 penny(s)"
-      };
+      List<string> ExpectedCoins = new List<string>() {"3 quarter(s)", "1 dime(s)", "1 nickel(s)", "4 penny(s)"};
             // Console.WriteLine to see what elements in the List
             foreach(var item in OutputCoins)
             {
